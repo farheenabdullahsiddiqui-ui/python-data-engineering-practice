@@ -1,6 +1,7 @@
 import csv
 import os
 
+
 def read_csv(file_path: str)-> list[list[str]]:
     with open(file_path, mode='r', encoding="utf-8") as file:
         reader = csv.reader(file)
