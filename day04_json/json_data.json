@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Alice",
+    "Age": 30,
+    "City": "London",
+    "Salary": 50000.0
+  },
+  {
+    "Name": "Bob",
+    "Age": 25,
+    "City": "Manchester",
+    "Salary": 42000.0
+  },
+  {
+    "Name": "Charlie",
+    "Age": 35,
+    "City": "Leeds",
+    "Salary": 61000.0
+  },
+  {
+    "Name": "Diana",
+    "Age": 28,
+    "City": "Bristol",
+    "Salary": 47500.0
+  },
+  {
+    "Name": "Evan",
+    "Age": 41,
+    "City": "Glasgow",
+    "Salary": 53000.0
+  },
+  {
+    "Name": "Fiona",
+    "Age": 33,
+    "City": "Cardiff",
+    "Salary": 49000.0
+  }
+]
