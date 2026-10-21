@@ -25,6 +25,29 @@ def write_json(file_path:str, rows:list[dict])-> None:
 def read_json(file_path:str)-> list[dict]:
    with open (file_path, mode= 'r', encoding='utf-8') as file:
       return json.load(file)
+
+
+def summarise(rows:list[dict])->dict:
+   if not rows:
+       return  {
+              "total_salary" : 0, 
+              "average_salary" : 0, 
+              "count": 0
+              }
+   #Sum
+   total = sum(row["Salary"] for row in rows )
+  
+   #Average
+   average = total / len(rows)
+
+
+   return {
+   "total_salary" : total, 
+   "average_salary" : round(average,2), 
+   "count":len(rows)
+  }
+
+
                 
 if __name__ == "__main__":
     print("🚀 JSON Data Writer - Day 4")
@@ -42,3 +65,6 @@ if __name__ == "__main__":
 
     loaded = read_json(json_path)
     print(type(loaded[0]["Age"]), type(loaded[0]["Salary"]))
+
+    result = summarise(loaded)
+    print(result)
