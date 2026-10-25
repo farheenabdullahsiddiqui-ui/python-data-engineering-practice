@@ -9,7 +9,7 @@ def read_csv(file_path: str)-> list[list[str]]:
             return list(reader)
     except FileNotFoundError:
             print(f"No file found at {file_path}")
-            return []
+            return None
 
 def read_csv_dict(file_path:str)->list[dict[str,str]]:
     try:
