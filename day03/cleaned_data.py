@@ -61,7 +61,6 @@ if __name__ == "__main__":
      print(cleaned_data_read)
 
 
-
     
 
 

@@ -34,17 +34,30 @@ def summarise(rows:list[dict])->dict:
               "average_salary" : 0, 
               "count": 0
               }
+   #Clean the rows for "" or n/a data
+   cleaned_salaries = []
+   skipped = 0
+   for row in rows:
+      try:
+        new_salary = int(row.get("Salary",""))
+        cleaned_salaries.append(new_salary)
+      except (ValueError,TypeError):
+        skipped +=1
+        continue
+      
+
+   print(f"Skipped {skipped} of {len(rows)} rows")
    #Sum
-   total = sum(row["Salary"] for row in rows )
+   total = sum(cleaned_salaries )
   
    #Average
-   average = total / len(rows)
+   average = total / len(cleaned_salaries) if cleaned_salaries else 0
 
 
    return {
    "total_salary" : total, 
    "average_salary" : round(average,2), 
-   "count":len(rows)
+   "count":len(cleaned_salaries)
   }
 
 
@@ -67,4 +80,21 @@ if __name__ == "__main__":
     print(type(loaded[0]["Age"]), type(loaded[0]["Salary"]))
 
     result = summarise(loaded)
-    print(result)
+  
+  
+    
+     #running on non existinh file
+    #non_existing_file =os.path.join(os.path.dirname(__file__),"noe.csv")
+    #read_csv.read_csv(non_existing_file)
+
+    #Dirty data 
+    messy_data = os.path.join(os.path.dirname(__file__), "messy_data.csv")
+    summarise( read_csv.read_csv_dict(messy_data))
+    
+
+    salaries_clean = os.path.join(os.path.dirname(__file__), "salaries_clean.csv")
+    summarise( read_csv.read_csv_dict(salaries_clean))
+
+    salaries_header_only = os.path.join(os.path.dirname(__file__), "salaries_header_only.csv")
+    summarise( read_csv.read_csv_dict(salaries_header_only))
+

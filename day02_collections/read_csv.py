@@ -3,16 +3,25 @@ import os
 
 
 def read_csv(file_path: str)-> list[list[str]]:
-    with open(file_path, mode='r', encoding="utf-8") as file:
-        reader = csv.reader(file)
-        rows= list(reader)
-        return rows
+    try:
+        with open(file_path, mode='r', encoding="utf-8") as file:
+            reader = csv.reader(file)
+            return list(reader)
+    except FileNotFoundError:
+            print(f"No file found at {file_path}")
+            return []
 
 def read_csv_dict(file_path:str)->list[dict[str,str]]:
-    with open(file_path, mode='r', encoding="utf-8") as file:
-        dict_reader = csv.DictReader(file)
-        dict_data = list(dict_reader)
-        return dict_data
+    try:
+        with open(file_path, mode='r', encoding="utf-8") as file:
+            dict_reader = csv.DictReader(file)
+            return list(dict_reader)
+    except FileNotFoundError:
+        print(f"No file found at {file_path}")
+        return []
+
+
+        
 
 
 if __name__ == "__main__":
@@ -26,6 +35,7 @@ if __name__ == "__main__":
      #Unpacking the list
      head, *rows = data
      print(f" Header - {head}")
+     print(f"Rows- {rows}")
      print(f" Length of data {len(data)}")
      print(f" Length of rows  {len(rows)}")
      #Call to dict_reader
